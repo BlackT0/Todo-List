@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition name="hello" appear>
-            <h1 v-show="isShow" @click="displayOrHidden">你好啊! Vue!</h1>
+            <h1 v-show="isShow" @click="displayOrHidden">你好啊! Vue! 我现在同时也在学习Git命令.</h1>
         </transition>
 
     </div>
