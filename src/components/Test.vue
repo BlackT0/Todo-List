@@ -1,9 +1,9 @@
 <template>
     <div>
-        <button @click="displayOrHidden">显示/隐藏</button>
         <transition name="hello" appear>
-            <h1 v-show="isShow">你好啊! Vue!</h1>
+            <h1 v-show="isShow" @click="displayOrHidden">你好啊! Vue!</h1>
         </transition>
+
     </div>
 </template>
 <script>
@@ -17,6 +17,9 @@ export default {
     methods: {
         displayOrHidden() {
             this.isShow = !this.isShow
+            setTimeout(() => {
+                this.isShow = !this.isShow
+            }, 2000)
         }
     }
 }
@@ -24,6 +27,7 @@ export default {
 <style lang='less' scoped>
 h1 {
     background-color: orangered;
+    text-align: center;
 }
 
 .hello-enter-active {
