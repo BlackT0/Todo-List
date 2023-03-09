@@ -3,7 +3,8 @@
         <transition name="hello" appear>
             <h1 v-show="isShow" @click="displayOrHidden">你好啊! Vue! 我现在同时也在学习Git命令.</h1>
         </transition>
-        <div>{{ students }}</div>
+        <button @click="stus">获取学生</button>
+        <button @click="cars">获取汽车</button>
     </div>
 </template>
 <script>
@@ -13,11 +14,7 @@ export default {
     data() {
         return {
             isShow: true,
-            students: null
         }
-    },
-    mounted() {
-        axios.get('/student').then(result => this.students = result.data)
     },
     methods: {
         displayOrHidden() {
@@ -25,6 +22,12 @@ export default {
             setTimeout(() => {
                 this.isShow = !this.isShow
             }, 2000)
+        },
+        stus() {
+            axios.get('/student').then(result => console.log(result.data))
+        },
+        cars() {
+            axios.get('/car').then(result => console.log(result.data))
         }
     }
 }
