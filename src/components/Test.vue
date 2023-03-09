@@ -3,16 +3,21 @@
         <transition name="hello" appear>
             <h1 v-show="isShow" @click="displayOrHidden">你好啊! Vue! 我现在同时也在学习Git命令.</h1>
         </transition>
-
+        <div>{{ students }}</div>
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
     name: 'Test',
     data() {
         return {
-            isShow: true
+            isShow: true,
+            students: null
         }
+    },
+    mounted() {
+        axios.get('/student').then(result => this.students = result.data)
     },
     methods: {
         displayOrHidden() {
